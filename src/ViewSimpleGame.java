@@ -9,6 +9,7 @@ public class ViewSimpleGame {
     JLabel label;
     public ViewSimpleGame (){
         fenetre = new JFrame();
+        fenetre.setTitle("Game");
         fenetre.setLayout(new BorderLayout());
         fenetre.setSize(500, 500);
         label = new JLabel("Turn: 0", SwingConstants.CENTER);

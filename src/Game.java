@@ -1,4 +1,4 @@
-import javax.swing.text.View;
+
 
 public abstract class Game implements Runnable{
     
@@ -65,13 +65,16 @@ public abstract class Game implements Runnable{
     */
     public void run(){
         ViewSimpleGame view = new ViewSimpleGame();
+        ViewCommand viewcommand = new ViewCommand();
         System.out.println("Début du jeu");
         view.show();
+        viewcommand.show();
         while(isRunning){
             step();
             view.Actualize(currentTurn);
+            viewcommand.actualize(currentTurn);
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             }catch(InterruptedException i){
 
             }
