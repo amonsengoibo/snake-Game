@@ -1,7 +1,8 @@
+import javax.swing.text.View;
 
 public abstract class Game implements Runnable{
     
-    Thread thread;
+    private Thread thread;
     private int currentTurn; // qui permettra de compter le nombre de tours courant du jeu.
     private int maxTurn; // dont la valeur est prédéfinie au moment de la création du jeu via le constructeur de Game.
     private boolean isRunning; // qui permet de savoir si le jeu a été mis en pause ou pas.
@@ -14,6 +15,7 @@ public abstract class Game implements Runnable{
     public void launch(){
         isRunning = true;
         thread = new Thread(this);
+        thread.setDaemon(true);
         thread.start();
     }
     
@@ -62,11 +64,14 @@ public abstract class Game implements Runnable{
     Méthode qui lance le jeu en pas à pas avec la méthode step() tant que le flag booléen isRunning reste à true.
     */
     public void run(){
+        ViewSimpleGame view = new ViewSimpleGame();
         System.out.println("Début du jeu");
+        view.show();
         while(isRunning){
             step();
+            view.Actualize(currentTurn);
             try {
-                Thread.sleep(500);
+                Thread.sleep(1000);
             }catch(InterruptedException i){
 
             }
