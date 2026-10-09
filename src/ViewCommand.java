@@ -42,14 +42,18 @@ public class ViewCommand implements Observer {
             //i++;
             
         }
+
+        JPanel panneauGaucheBas = new JPanel(new GridLayout(2,1));
+        JLabel numberTurnPerSecondLabel = new JLabel("Number of turns per second", JLabel.CENTER);
         numberTurnPerSecond = new JSlider(JSlider.HORIZONTAL, 1, 10, 2);
         numberTurnPerSecond.setMajorTickSpacing(1);
         numberTurnPerSecond.setMinorTickSpacing(1);
         numberTurnPerSecond.setPaintTicks(true);
         numberTurnPerSecond.setPaintLabels(true);
         label = new JLabel("Turn : 0",JLabel.CENTER);
-    
-        panneauBas.add(numberTurnPerSecond);
+        panneauGaucheBas.add(numberTurnPerSecondLabel);
+        panneauGaucheBas.add(numberTurnPerSecond);
+        panneauBas.add(panneauGaucheBas);
         panneauBas.add(label);
         
         fenetre.add(panneauHaut);

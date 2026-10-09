@@ -7,7 +7,7 @@ public class SimpleGame extends Game {
     public boolean isGameOver(){
         return false;
     }
-     public void  initializeGame(){
+    public void  initializeGame(){
 
     }
     public void takeTurn(){
