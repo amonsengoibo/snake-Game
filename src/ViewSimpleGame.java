@@ -5,9 +5,16 @@ import javax.swing.*;
 //import java.awt.event.*;
 
 public class ViewSimpleGame implements Observer{
-    JFrame fenetre;
-    JLabel label;
-    public ViewSimpleGame (Observable obs){
+    private JFrame fenetre;
+    private JLabel label;
+    private AbstractController controller;
+
+    public ViewSimpleGame (AbstractController controller, Observable obs){
+        
+        // instanciation du controlleur
+        this.controller = controller;
+
+
         fenetre = new JFrame();
         fenetre.setTitle("Game");
         fenetre.setLayout(new BorderLayout());
@@ -18,10 +25,13 @@ public class ViewSimpleGame implements Observer{
 
         //Ajout de l'observateur courant 
         obs.addObserver(this);
+        show();
     }
+
     public void Actualize(int currentTurn){
         label.setText("Turn: "+currentTurn);
     }
+    
     public void show(){
         fenetre.setVisible(true);
     }

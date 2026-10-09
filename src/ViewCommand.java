@@ -4,11 +4,18 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ViewCommand implements Observer {
-    JFrame fenetre;
-    JSlider numberTurnPerSecond;
-    JLabel label;
-    Map<String, JButton> buttons = new LinkedHashMap<>();
-    public ViewCommand(Observable obs){
+    private JFrame fenetre;
+    private JSlider numberTurnPerSecond;
+    private JLabel label;
+    private Map<String, JButton> buttons = new LinkedHashMap<>();
+    private AbstractController controller;
+
+    public ViewCommand(AbstractController controller, Observable obs){
+        
+        // instanciation du controlleur
+        this.controller = controller;
+
+
         System.out.println("Constructeur de ViewCommandi");
         fenetre = new JFrame();
         fenetre.setTitle("Commande");
@@ -62,6 +69,7 @@ public class ViewCommand implements Observer {
 
         //Ajout de l'observateur courant 
         obs.addObserver(this);
+        show();
     }
     public void Actualize(int turn){
         label.setText("Turn :"+turn);

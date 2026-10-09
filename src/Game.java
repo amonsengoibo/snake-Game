@@ -4,14 +4,18 @@ import java.util.List;
 public abstract class Game implements Runnable, Observable{
     
     private Thread thread;
-    private int currentTurn; // qui permettra de compter le nombre de tours courant du jeu.
+    protected int currentTurn; // qui permettra de compter le nombre de tours courant du jeu.
     private int maxTurn; // dont la valeur est prédéfinie au moment de la création du jeu via le constructeur de Game.
     private boolean isRunning; // qui permet de savoir si le jeu a été mis en pause ou pas.
+    private long speed;
     private List<Observer> observers = new ArrayList<>();
 
     public Game(int maxTurn){
+
         System.out.println("Appel au constructeur de Game");
         this.maxTurn = maxTurn;
+        this.speed = 2000;
+
     }
 
     public void launch(){
@@ -46,7 +50,7 @@ public abstract class Game implements Runnable, Observable{
     */
    
     public void step(){
-        System.out.println("Tour n° "+currentTurn);
+        
         currentTurn++;
         //if(!isGameOver()) 
         if(currentTurn < maxTurn){
@@ -66,24 +70,30 @@ public abstract class Game implements Runnable, Observable{
         isRunning = false;
         System.out.println("Le jeu est mis en pause");
     }
+
     /*
         Méthode qui lance le jeu en pas à pas avec la méthode step() tant que le flag booléen isRunning reste à true.
     */
     public void run(){
         
-        System.out.println("Début du jeu");
-        
+        System.out.println("Début du jeu :");
+        // !!! A Ajouter isGameOVer() par la suite dans la condition de boucle !!!
         while(isRunning){
             step();
             
             try {
-                Thread.sleep(2000);
+                Thread.sleep(speed);
             }catch(InterruptedException i){
 
             }
         }
     }
-
+    public void play(){
+        isRunning = true;
+    }
+    public void setSpeed(long speed){
+        this.speed = speed;
+    }
     public void addObserver(Observer obs){
         observers.add(obs);
     }
