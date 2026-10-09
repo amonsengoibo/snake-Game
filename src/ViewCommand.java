@@ -3,12 +3,12 @@ import java.awt.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class ViewCommand {
+public class ViewCommand implements Observer {
     JFrame fenetre;
     JSlider numberTurnPerSecond;
     JLabel label;
     Map<String, JButton> buttons = new LinkedHashMap<>();
-    public ViewCommand(){
+    public ViewCommand(Observable obs){
         System.out.println("Constructeur de ViewCommandi");
         fenetre = new JFrame();
         fenetre.setTitle("Commande");
@@ -48,15 +48,18 @@ public class ViewCommand {
         numberTurnPerSecond.setPaintTicks(true);
         numberTurnPerSecond.setPaintLabels(true);
         label = new JLabel("Turn : 0",JLabel.CENTER);
-        
+    
         panneauBas.add(numberTurnPerSecond);
         panneauBas.add(label);
         
         fenetre.add(panneauHaut);
         fenetre.add(panneauBas);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //Ajout de l'observateur courant 
+        obs.addObserver(this);
     }
-    public void actualize(int turn){
+    public void Actualize(int turn){
         label.setText("Turn :"+turn);
     }
     public void show(){
