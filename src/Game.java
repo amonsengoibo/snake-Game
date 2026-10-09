@@ -51,9 +51,10 @@ public abstract class Game implements Runnable, Observable{
    
     public void step(){
         
-        currentTurn++;
+        
         //if(!isGameOver()) 
         if(currentTurn < maxTurn){
+            currentTurn++;
             takeTurn();
         }  
         else{
@@ -68,6 +69,7 @@ public abstract class Game implements Runnable, Observable{
     */
     public void pause(){
         isRunning = false;
+        
         System.out.println("Le jeu est mis en pause");
     }
 
@@ -86,10 +88,13 @@ public abstract class Game implements Runnable, Observable{
             }catch(InterruptedException i){
 
             }
+            notifyObservers();
         }
     }
     public void play(){
         isRunning = true;
+        launch();
+        notifyObservers();
     }
     public void setSpeed(long speed){
         this.speed = speed;

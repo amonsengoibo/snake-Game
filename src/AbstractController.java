@@ -20,7 +20,7 @@ public abstract class AbstractController {
     // passage automatique des étapes
     public void play(){
         game.play();
-        game.run();
+        
     }
 
     // interruption du passage automatique des étapes
