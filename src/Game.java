@@ -12,9 +12,9 @@ public abstract class Game implements Runnable, Observable{
 
     public Game(int maxTurn){
 
-        System.out.println("Appel au constructeur de Game");
+        System.out.println("Appel au constructeur de Gameh");
         this.maxTurn = maxTurn;
-        this.speed = 2000;
+        this.speed = 500;
 
     }
 

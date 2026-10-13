@@ -29,8 +29,8 @@ public abstract class AbstractController {
     }
 
     // réglage de la vitesse du jeu
-    public void setSpeed(double speed){
-        long s = Math.round(speed * 1000.0);
+    public void setSpeed(double numberTurns){
+        long s = Math.round(1000.0 / numberTurns);
         game.setSpeed(s);
     }
 }

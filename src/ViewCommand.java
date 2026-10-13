@@ -14,12 +14,14 @@ public class ViewCommand implements Observer {
     private JLabel label;
     private Map<String, JButton> buttons = new LinkedHashMap<>();
     private AbstractController controller;
+    private Etat etat;
 
     public ViewCommand(AbstractController controller, Observable obs){
         
         // instanciation du controlleur
         this.controller = controller;
 
+        this.etat = new EtatStart(this);
 
         System.out.println("Constructeur de ViewCommandi");
         fenetre = new JFrame();
@@ -46,7 +48,14 @@ public class ViewCommand implements Observer {
         
         //Afficher
         show();
+
+        start();
     }
+
+    public void setEtat(Etat etat){
+        this.etat = etat;
+    }
+
     public void createUserInterface(){
         
         JPanel panneauHaut = new JPanel(new GridLayout(1, 4));
@@ -97,15 +106,19 @@ public class ViewCommand implements Observer {
                 public void actionPerformed(ActionEvent evenement) {
                     switch(key){
                         case "restart":
+                            start();
                             controller.restart();
                             break;
                         case "play":
+                            play();
                             controller.play();
                             break;
                         case "step":
+                            step();
                             controller.step();
                             break;
                         case "pause":
+                            pause();
                             controller.pause();
                             break;
                     }
@@ -131,5 +144,47 @@ public class ViewCommand implements Observer {
     }
     public void show(){
         fenetre.setVisible(true);
+    }
+
+    /* ----> Méthodes du pattern Etat */
+    public void start(){
+        buttons.get("restart").setEnabled(false);
+        buttons.get("pause").setEnabled(false);
+        buttons.get("step").setEnabled(true);
+        buttons.get("play").setEnabled(true);
+
+        etat.start();
+    }
+    public void play(){
+        
+        buttons.get("restart").setEnabled(true);
+        buttons.get("pause").setEnabled(true);
+        buttons.get("step").setEnabled(false);
+        buttons.get("play").setEnabled(false);  
+        
+        etat.play();
+    }
+    public void pause(){
+        
+        buttons.get("restart").setEnabled(true);
+        buttons.get("pause").setEnabled(false);
+        buttons.get("step").setEnabled(true);
+        buttons.get("play").setEnabled(true);   
+        
+        etat.pause();
+    }
+    public void step(){
+        
+        buttons.get("restart").setEnabled(true);
+        buttons.get("pause").setEnabled(false);
+        buttons.get("step").setEnabled(true);
+        buttons.get("play").setEnabled(true);   
+        
+        etat.step();
+    }
+    /* <---- Méthodes du pattern Etat */
+
+    public String toString(){
+        return "ViewCommand dans l'état " + etat.getClass();
     }
 }
