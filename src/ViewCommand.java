@@ -27,7 +27,7 @@ public class ViewCommand implements Observer {
         fenetre = new JFrame();
         fenetre.setTitle("Commande");
         fenetre.setLayout(new GridLayout(2, 1));
-        fenetre.setSize(700, 400);
+        fenetre.setSize(500, 300);
 
         fenetre.revalidate(); // Re-calcule la disposition des composants
         fenetre.repaint();    // Redessine l'interface
