@@ -1,8 +1,13 @@
+package view;
 import java.awt.BorderLayout;
 
 import javax.swing.*;
 //import java.awt.*;
 //import java.awt.event.*;
+
+import controller.AbstractController;
+import model.Observable;
+import model.Observer;
 
 public class ViewSimpleGame implements Observer{
     private JFrame fenetre;
@@ -13,7 +18,8 @@ public class ViewSimpleGame implements Observer{
         
         // instanciation du controlleur
         this.controller = controller;
-
+        
+        
         
         fenetre = new JFrame();
         fenetre.setTitle("Game");
@@ -40,4 +46,5 @@ public class ViewSimpleGame implements Observer{
     public void show(){
         fenetre.setVisible(true);
     }
+    
 }

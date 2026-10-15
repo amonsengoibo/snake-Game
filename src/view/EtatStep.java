@@ -1,3 +1,5 @@
+package view;
+
 public class EtatStep implements Etat {
     
     private ViewCommand viewCommand;

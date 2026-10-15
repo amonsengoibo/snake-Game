@@ -1,3 +1,9 @@
+package controller;
+
+import model.*;
+import view.ViewCommand;
+import view.ViewSimpleGame;
+
 public class ControllerSimpleGame extends AbstractController {
     
     public ControllerSimpleGame(){

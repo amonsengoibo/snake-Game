@@ -1,11 +1,16 @@
+package view;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import controller.AbstractController;
+import model.Observable;
+import model.Observer;
+
 import java.awt.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.awt.*;
 import java.awt.event.*;
 
 public class ViewCommand implements Observer {

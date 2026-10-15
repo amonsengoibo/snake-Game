@@ -1,3 +1,5 @@
+package model;
+
 public class SimpleGame extends Game {
     public SimpleGame(int maxTurn){
         super(maxTurn);

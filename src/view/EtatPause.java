@@ -1,3 +1,7 @@
+package utils;
+
+import view.ViewCommand;
+
 public class EtatPause implements Etat {
     
     private ViewCommand viewCommand;

@@ -1,3 +1,6 @@
+package view;
+
+
 public class EtatStart implements Etat {
     
     private ViewCommand viewCommand;

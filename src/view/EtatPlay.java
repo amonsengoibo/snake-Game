@@ -1,3 +1,5 @@
+package view;
+
 public class EtatPlay implements Etat {
     
     private ViewCommand viewCommand;

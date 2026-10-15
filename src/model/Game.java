@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +33,7 @@ public abstract class Game implements Runnable, Observable{
         abstraite void initializeGame(), non implémentée pour l’instant. Elle sera implémentée
         par les classes concrètes qui héritent de Game.
      */
-    void init(){
+    public void init(){
         System.out.println("Initialisation du jeu");
         currentTurn = 0;
         isRunning = true;
@@ -91,6 +93,7 @@ public abstract class Game implements Runnable, Observable{
             notifyObservers();
         }
     }
+    
     public void play(){
         isRunning = true;
         launch();

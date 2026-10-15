@@ -1,3 +1,7 @@
+package controller;
+
+import model.Game;
+
 public abstract class AbstractController {
     
     protected Game game;
