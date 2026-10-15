@@ -1,6 +1,4 @@
-package utils;
-
-import view.ViewCommand;
+package view;
 
 public class EtatPause implements Etat {
     

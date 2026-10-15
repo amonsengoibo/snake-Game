@@ -3,7 +3,14 @@ import controller.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        AbstractController controller = new ControllerSimpleGame();
-        //controller.play();
+        
+        /* Simple Game */
+        /*ControllerSimpleGame controller = new ControllerSimpleGame();*/
+        
+        /* Snake Game */
+        ControllerSnakeGame controller = new ControllerSnakeGame(
+            "../layouts/smallNoWall.lay"
+        );
+        
     }
 }

@@ -42,7 +42,8 @@ public class ViewCommand implements Observer {
         buttons.put("pause", new JButton());
         
         //Position de la fenêtre sur l'écran par rapport à centre de l'écran
-        DispositionFenetreEcran();
+        DispositionFenetre d = new DispositionFenetre(fenetre);
+        d.DispositionFenetreEcran(1000, 350, false);
         
         // Création de l'interface
         createUserInterface();
@@ -95,14 +96,7 @@ public class ViewCommand implements Observer {
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
-    public void DispositionFenetreEcran(){
-        Dimension windowSize = fenetre.getSize();
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Point centerPoint = ge.getCenterPoint();
-        int dx = centerPoint.x - windowSize.width /2 + 1000;
-        int dy = centerPoint.y - windowSize.height / 2 - 350;
-        fenetre.setLocation(dx,dy);
-    }
+    
     public void CaptureEvenement(){
         for(Map.Entry<String,JButton> entry : buttons.entrySet()){
             final String key = entry.getKey();
@@ -144,7 +138,8 @@ public class ViewCommand implements Observer {
         });
         
     }
-    public void Actualize(int turn){
+    public void update(Observable obs, int turn){
+        
         label.setText("Turn :"+turn);
     }
     public void show(){

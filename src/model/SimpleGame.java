@@ -8,7 +8,7 @@ public class SimpleGame extends Game {
 
     // vérifie si le nombre maximum de tours est atteint
     public boolean isGameOver(){
-        return false;
+        return maxTurnExceeds();
     }
 
     public void  initializeGame(){

@@ -41,6 +41,11 @@ public abstract class Game implements Runnable, Observable{
         notifyObservers();
     }
 
+    public boolean maxTurnExceeds(){
+        return currentTurn > maxTurn;
+    }
+
+
     /*
         Méthode qui incrémente le compteur de tours du jeu et effectue
         un seul tour du jeu en appelant la méthode abstraite void takeTurn() si le jeu n’est
@@ -50,12 +55,11 @@ public abstract class Game implements Runnable, Observable{
         méthode abstraite void gameOver() et qui permettra d’afficher un message de fin du
         jeu.
     */
-   
     public void step(){
         
         
         //if(!isGameOver()) 
-        if(currentTurn < maxTurn){
+        if(maxTurnExceeds() || isGameOver()){
             currentTurn++;
             takeTurn();
         }  
@@ -110,7 +114,7 @@ public abstract class Game implements Runnable, Observable{
     }
     public void notifyObservers(){
         for(int i = 0; i < observers.size(); i++){
-            observers.get(i).Actualize(currentTurn);
+            observers.get(i).update(this, currentTurn);
         }
     }
 

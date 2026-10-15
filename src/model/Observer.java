@@ -1,5 +1,5 @@
 package model;
 
 public interface Observer {
-    public void Actualize(int turn);
+    public void update(Observable obs, int turn);
 }

@@ -2,19 +2,19 @@ package view;
 import java.awt.BorderLayout;
 
 import javax.swing.*;
-//import java.awt.*;
+import java.awt.*;
 //import java.awt.event.*;
 
-import controller.AbstractController;
+import controller.ControllerSimpleGame;
 import model.Observable;
 import model.Observer;
 
 public class ViewSimpleGame implements Observer{
     private JFrame fenetre;
     private JLabel label;
-    private AbstractController controller;
+    private ControllerSimpleGame controller;
 
-    public ViewSimpleGame (AbstractController controller, Observable obs){
+    public ViewSimpleGame (ControllerSimpleGame controller, Observable obs){
         
         // instanciation du controlleur
         this.controller = controller;
@@ -31,6 +31,8 @@ public class ViewSimpleGame implements Observer{
         //Ajout de l'observateur courant 
         obs.addObserver(this);
         show();
+        DispositionFenetre d = new DispositionFenetre(fenetre);
+        d.DispositionFenetreEcran(1000, 350, true);
     }
     public void createUserInterface(){
         
@@ -39,7 +41,7 @@ public class ViewSimpleGame implements Observer{
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
-    public void Actualize(int currentTurn){
+    public void update(Observable obs, int currentTurn){
         label.setText("Turn: "+currentTurn);
     }
 
